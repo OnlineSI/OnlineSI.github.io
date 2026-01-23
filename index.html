@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title> OnlineSI </title>
+	<link href="res/css/bootstrap.min.css" rel="stylesheet">
+	<script src="res/css/fa.js"></script>
+	<!-- Font Awesome 5 for correspondence author icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- MathJax for LaTeX rendering -->
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	<script>
+		window.MathJax = {
+			tex: {
+				inlineMath: [['$', '$'], ['\\(', '\\)']],
+				displayMath: [['$$', '$$'], ['\\[', '\\]']]
+			}
+		};
+	</script>
+
+	<style>
+      .header {
+        width: auto;
+        padding-top: 4rem;
+        padding-bottom: 2rem;
+      }
+
+      a:link,a:visited
+      {
+        color: #0071bc;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #208799;
+      }
+
+      .section-div {height: 3em}
+      .content-div {height: 1em}
+
+      .no-gutters {
+	      margin-right: 0;
+	      margin-left: 0;
+      }
+
+	  .btn {
+	      margin-left: 0.2rem;
+	  	  margin-right: 0.2rem;
+	  }
+
+	</style>
+</head>
+
+<div class="header">
+	<center><h1>OnlineSI: Taming Large Language Model for <br>
+		Online 3D Understanding and Grounding</h1></center>
+	<div class="content-div"></div>
+	<center>
+		<a href="https://storeblank.github.io/" target="_blank" style="font-size:18px">Zixian Liu</a><sup style="font-size:12px">&nbsp1</sup>,&nbsp
+		<a href="https://frozenburning.github.io/" target="_blank" style="font-size:18px">Zhaoxi Chen</a><sup style="font-size:12px">&nbsp2</sup>,&nbsp
+		<a href="https://scholar.google.com/citations?user=lSDISOcAAAAJ" target="_blank" style="font-size:18px">Liang Pan</a><sup style="font-size:12px"><i class="far fa-envelope" style="font-size:11px; margin-left:3px; vertical-align:middle;"></i></sup><sup style="font-size:12px">&nbsp3</sup>,&nbsp
+		<a href="https://liuziwei7.github.io/" target="_blank" style="font-size:18px">Ziwei Liu</a><sup style="font-size:12px"><i class="far fa-envelope" style="font-size:11px; margin-left:3px; vertical-align:middle;"></i></sup><sup style="font-size:12px">&nbsp2</sup>
+	</center>
+
+	<div class="content-div"></div>
+	<center>
+		<sup style="font-size:12px">1</sup>&nbspTsinghua University,
+		<sup style="font-size:12px">2</sup>&nbspNanyang Technological University,
+		<sup style="font-size:12px">3</sup>&nbspShanghai AI Lab,
+	</center>
+
+	<!-- <div class="content-div"></div>
+	<center>
+		<p style="font-size:16px">
+			<em>International Conference on Robotics and Automation</em> (<strong>ICRA</strong>), 2025
+		</p>
+	</center> -->
+
+	<div class="content-div"></div>
+	<center>
+		<div class="btn-group" role="group">
+
+			<a href="" target="_blank">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fas fa-file-pdf"></i> Paper
+				</span></button>
+			</a>
+
+			<a href="" target="_blank">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fab fa-github"></i> Code (Coming Soon)
+				</span></button>
+			</a>
+
+			<!-- <a href="assets/appendix.pdf" target="_blank">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fas fa-file-pdf"></i> Appendix
+				</span></button>
+			</a> -->
+
+<!--			<a href="">-->
+<!--				<button type="button" class="btn btn-dark"><span class="icon">-->
+<!--					<i class="fab fa-youtube"></i> Video-->
+<!--				</span></button>-->
+<!--			</a>-->
+
+			<!-- <a href="https://storeblank.github.io/">
+				<button type="button" class="btn btn-dark"><span class="icon">
+					<i class="fab fa-twitter"></i> Twitter
+				</span></button>
+        	</a> -->
+
+		</div>
+	</center>
+</div>
+
+<div class="container">
+	<!--------------------- abstract --------------------->
+	<center>
+		<h2> Abstract </h2>
+		<div class="content-div"></div>
+		<p style="width:75%; text-align: justify; white-space: normal;"> In recent years, researchers have increasingly been interested in how to enable Multimodal Large Language Models (MLLM) to possess spatial understanding and reasoning capabilities. However, most existing methods overlook the importance of the ability to continuously work in an ever-changing world, and lack the possibility of deployment on embodied systems in real-world environments. In this work, we introduce <b>OnlineSI</b>, a framework that can continuously improve its spatial understanding of its surroundings given a video stream. Our core idea is to maintain a finite spatial memory to retain past observations, ensuring the computation required for each inference does not increase as the input accumulates. We further integrate 3D point cloud information with semantic information, helping MLLM to better locate and identify objects in the scene. To evaluate our method, we introduce the Fuzzy $F_1$-Score to mitigate ambiguity, and test our method on two representative datasets. Experiments demonstrate the effectiveness of our method, paving the way towards real-world embodied systems.</p>
+	</center>
+
+	<!-- <div class="content-div"></div>
+	<div class="col">
+		<center><video playsinline autoplay loop muted controls src="videos/kuda_teaser_v2.mp4" width="100%" preload="metadata"
+			   style="border-radius:10px;"></video>
+		</center>
+	</div> -->
+
+	<div class="content-div"></div>
+
+	<center>
+		<h2> Overview </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="col">
+		<center><img class="img-fluid" src="res/teaser.png" style="margin-bottom: 30px" width="100%" alt=""><br>
+			<p style="width:75%; text-align: justify; white-space: normal;"> <b>OnlineSI</b> is a framework specifically designed for online 3D understanding and object grounding. Taking a video stream as input, OnlineSI performs incremental semantic reconstruction and leverages a global spatial memory to aggregate observations over time. As demonstrated in the temporal progression, this allows the framework to continuously refine its scene understanding, updating the previous detection results (e.g., ``Update to fit the table'') and incrementally detecting new object instances.</p>
+		</center>
+	</div>
+
+
+	<center>
+		<div class="section-div"></div>
+		<h2> Method </h2>
+		<div class="content-div"></div>
+		<img class="img-fluid" src="res/method.png" style="margin-bottom: 30px" width="100%" alt=""><br>
+		<p style="width:75%; text-align: justify; white-space: normal;"> For each frame $\mathbf{I}_t$ in the video stream, we first reconstruct the pointmap $\mathbf{X}'_t$, and predict the semantic label for each point $\mathbf{Y}_t$. Next, we fuse the current pointmap and semantic map into the previous spatial memory $\{\mathbf{P}_{t-1}, \mathbf{S}_{t-1}\}$ for updating. We then use the point cloud encoder and the semantic encoder to obtain point cloud features and semantic features, respectively, and add them together as our spatial memory tokens. Lastly, we feed the spatial memory tokens and the text prompt tokens into the LLM backbone, and generate a scene description, which contains the detection results of objects in the current scene.</p>
+	</center>
+
+
+	<div class="section-div"></div>
+	<center>
+		<h2> Results </h2>
+	</center>
+	<div class="content-div"></div>
+	<div class="row align-items-start"> <!-- First Row of Videos -->
+		<!-- <div class="col-md-6 d-flex flex-column align-items-center">
+			<div class="content-div"></div>
+			<video playsinline autoplay loop muted controls src="videos/cube_00_v2.mp4" width="99%" style="border-radius:10px;"></video>
+		</div>
+		<div class="col-md-6 d-flex flex-column align-items-center">
+			<div class="content-div"></div>
+			<video playsinline autoplay loop muted controls src="videos/cube_01_v2.mp4" width="99%" style="border-radius:10px;"></video>
+		</div> -->
+
+		<div class="col-md-12 d-flex flex-column align-items-center">
+			<div class="content-div"></div>
+			<iframe src="https://app.rerun.io/version/0.22.1/index.html?url=https://onlinesi.github.io/reruns/partial_b1_0.rrd" 
+					style="width: 100%; height: 600px; border: none; border-radius: 10px; margin-bottom: 30px;"></iframe>
+		</div>
+		<div class="col-md-12 d-flex flex-column align-items-center">
+			<div class="content-div"></div>
+			<iframe src="https://app.rerun.io/version/0.22.1/index.html?url=https://onlinesi.github.io/reruns/partial_b2_1.rrd" 
+					style="width: 100%; height: 600px; border: none; border-radius: 10px; margin-bottom: 30px;"></iframe>
+		</div>
+		<div class="col-md-12 d-flex flex-column align-items-center">
+			<div class="content-div"></div>
+			<iframe src="https://app.rerun.io/version/0.22.1/index.html?url=https://onlinesi.github.io/reruns/partial_b4_0.rrd" 
+					style="width: 100%; height: 600px; border: none; border-radius: 10px; margin-bottom: 30px;"></iframe>
+		</div>
+	</div>
+	
+	
+	<!--------------------- Bibtex --------------------->
+	<div class="content-div"></div>
+	<center><h2> Bibtex </h2></center>
+	<div class="content-div"></div>
+	<div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px;">
+		<pre style="background: none; border: none; margin: 0;">
+		<!-- @misc{liu2025onlinesi,
+			title={OnlineSI: Taming Large Language Model for Online 3D Understanding and Grounding}, 
+			author={Zixian Liu and Zhaoxi Chen and Liang Pan and Ziwei Liu},
+			year={2025},
+			eprint={2503.10546},
+			archivePrefix={arXiv},
+			primaryClass={cs.CV},
+			url={https://arxiv.org/abs/2503.10546}, 
+	    } -->
+		left blank
+		</pre>
+	</div>
+
+
+	<div class="section-div"></div>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="res/js/bootstrap.min.js"></script>
+</div>
+
+</html>
